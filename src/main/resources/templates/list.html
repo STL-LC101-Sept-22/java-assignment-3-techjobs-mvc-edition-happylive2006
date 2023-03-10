@@ -20,15 +20,28 @@
             <tr>
                 <!-- TODO #2: Complete the View Jobs By Category Table. -->
 
-                <td></td> <!-- Feel free to remove or modify this element if necessary. -->
-
-                <td th:each="category : ${tableChoices}">
+                <td >
+                    <li>
+                        <a th:href="@{/list/jobs(column=all, value=all)}">View All</a>
+                    </li>
+                </td> <!-- Feel free to remove or modify this element if necessary. -->
+<!--                th:each = "variableName : ${collectionName}"-->
+<!--                The th:each statement gets placed INSIDE an HTML tag.-->
+<!--                collectionName represents an ArrayList, HashMap, or other collection.-->
+<!--                variableName represents an individual item or element within the collection.-->
+<!--                The ${} specifies the data provided by the controller.-->
+                <td th:each="listItem : ${tableChoices}">
                     <ul>
-                        <li th:each="item : ${category.value}">
-                            <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
+                        <li th:each="item: ${listItem.value}">
+                            <a th:href="@{/list/jobs(column=${listItem.key},value=${item})}" th:text="${item}"></a>
                         </li>
+
                     </ul>
+
                 </td>
+
+
+
             </tr>
         </table>
 
